@@ -17,13 +17,7 @@ import tensorflow as tf
 
 
 def return_strategy():
-    physical_devices = tf.config.list_physical_devices("GPU")
-    if len(physical_devices) == 0:
-        return tf.distribute.OneDeviceStrategy(device="/cpu:0")
-    elif len(physical_devices) == 1:
-        return tf.distribute.OneDeviceStrategy(device="/gpu:0")
-    else:
-        return tf.distribute.MirroredStrategy()
+    return tf.distribute.OneDeviceStrategy(device="/cpu:0")
 
 
 def calculate_3d_loss(y_gt, y_pred, loss_fn):

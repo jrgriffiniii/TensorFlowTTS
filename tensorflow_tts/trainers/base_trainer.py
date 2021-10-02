@@ -219,7 +219,7 @@ class GanBasedTrainer(BasedTrainer):
             super().init_train_eval_metrics(list_metrics_name)
 
     def get_n_gpus(self):
-        return self._strategy.num_replicas_in_sync
+        return 1
 
     def _get_train_element_signature(self):
         return self.train_data_loader.element_spec
@@ -734,7 +734,7 @@ class Seq2SeqBasedTrainer(BasedTrainer, metaclass=abc.ABCMeta):
         return self._optimizer
 
     def get_n_gpus(self):
-        return self._strategy.num_replicas_in_sync
+        return 1
 
     def compile(self, model, optimizer):
         self.set_model(model)
